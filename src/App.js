@@ -8,8 +8,8 @@
 
 import React, {Component} from 'react'
 import {StyleSheet, View, Text, Dimensions} from 'react-native'
-import Expense from './src/components/Expense'
-import AppHeader from './src/components/Header'
+import Expense from './components/Expense'
+import AppHeader from './components/Header'
 
 export default class App extends Component {
   render() {
@@ -25,18 +25,12 @@ export default class App extends Component {
             있었는지 확인 해 보세요!
           </Text>
         </View>
-        <View>
-          <Text style={styles.more}>아래로 넘겨서 통계 확인</Text>
-        </View>
       </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  header: {
-    width: width,
-  },
   body: {
     marginLeft: 15,
   },
@@ -48,9 +42,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'rgb(94, 94, 94)',
     lineHeight: 22,
-  },
-  more: {
-    fontSize: 16,
-    color: 'rgb(94, 94, 94)',
   }
 })

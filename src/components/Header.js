@@ -6,13 +6,13 @@
  * @flow
  */
 
-import React, {Component} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import React, {Component} from 'react'
+import {StyleSheet, Text, View} from 'react-native'
 
 export default class AppHeader extends Component {
   render() {
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, this.props.style]}>
         <Text style={styles.title}>MoMo</Text>
         <View style={styles.hamberger}>
           <View style={styles.hambergerItem} />
@@ -20,15 +20,14 @@ export default class AppHeader extends Component {
           <View style={styles.hambergerItem} />
         </View>
       </View>
-    );
+    )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 20,
+    marginTop: 20,
     height: 55,
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
@@ -37,8 +36,6 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     fontSize: 21,
     fontWeight: 'bold',
-    width: 62,
-    height: 20,
     color: 'rgb(51, 51, 51)',
   },
   hamberger: {
@@ -51,4 +48,4 @@ const styles = StyleSheet.create({
     height: 2,
     backgroundColor: 'rgb(0, 0, 0)'
   }
-});
+})

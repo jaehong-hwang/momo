@@ -23,8 +23,8 @@ export default class SwypeToStats extends Component {
     this.state.animated.setValue(0)
     Animated.timing(this.state.animated, {
         toValue: 1,
-        easing: Easing.bezier(.22,.71,.34,-0.08),
-        duration: 1000,
+        easing: Easing.bezier(.05,.7,.6,-0.09),
+        duration: 1500,
     }).start(() => setTimeout(() => this.runAnimation(), 1500))
   }
 

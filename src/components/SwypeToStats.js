@@ -40,7 +40,7 @@ export default class SwypeToStats extends Component {
           {
             translateY: this.state.animated.interpolate({
               inputRange: [0, 1],
-              outputRange: [0, 15],
+              outputRange: [0, 20],
             })
           }
         ]

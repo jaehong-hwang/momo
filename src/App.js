@@ -10,6 +10,7 @@ import React, {Component} from 'react'
 import {StyleSheet, View, Text, Image, Dimensions} from 'react-native'
 import Expense from './components/Expense'
 import AppHeader from './components/Header'
+import SwypeToStats from './components/SwypeToStats'
 
 export default class App extends Component {
   render() {
@@ -27,13 +28,7 @@ export default class App extends Component {
             있었는지 확인 해 보세요!
           </Text>
         </View>
-        <View style={{position: 'absolute', alignSelf: 'center', bottom: 100}}>
-          <Text style={styles.swypeText}>아래로 넘겨서 통계 확인</Text>
-          <Image
-            style={{width: 17, height: 17, alignSelf: 'center', marginTop: 5}}
-            source={require('./assets/images/arrow-2bottom.png')}
-          />
-        </View>
+        <SwypeToStats style={{position: 'absolute', alignSelf: 'center', bottom: 100}} />
       </View>
     )
   }
@@ -51,9 +46,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'rgb(94, 94, 94)',
     lineHeight: 22,
-  },
-  swypeText: {
-    fontSize: 16,
-    color: 'rgb(94, 94, 94)',
   },
 })

@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Animated, Easing, StyleSheet, Text, View, Image} from 'react-native'
+import {Animated, Easing, StyleSheet, Text, Image} from 'react-native'
 
 export default class SwypeToStats extends Component {
 

@@ -1,16 +1,43 @@
 import React, {Component} from 'react'
-import {StyleSheet, View, Text, Image, Dimensions} from 'react-native'
+import {StyleSheet, View, Text, Image, Dimensions, Animated} from 'react-native'
 import Expense from './components/Expense'
 import AppHeader from './components/Header'
 import SwypeToStats from './components/SwypeToStats'
 
 export default class App extends Component {
+  state = {
+    hamberger: new Animated.Value(0),
+    menuOpened: false
+  }
+
+  menuClick() {
+    this.state.menuOpened ?
+      this.closeMenu() :
+      this.openMenu()
+
+    this.setState({ menuOpened: !this.state.menuOpened })
+  }
+
+  openMenu() {
+    Animated.timing(this.state.hamberger, {
+      toValue: 1,
+      duration: 500,
+    }).start()
+  }
+
+  closeMenu() {
+    Animated.timing(this.state.hamberger, {
+      toValue: 0,
+      duration: 500,
+    }).start()
+  }
+
   render() {
     let {height, width} = Dimensions.get('window')
 
     return (
       <View style={{height: height}}>
-        <AppHeader style={styles.header} />
+        <AppHeader hamberger={this.state.hamberger} menuClick={() => this.menuClick()} />
         <View style={styles.body}>
           <Expense title="이번달 지출" price="312540" style={styles.expense} />
           <Expense title="초과 지출" price="12540" error style={styles.expense} />

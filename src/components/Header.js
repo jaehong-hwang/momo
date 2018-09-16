@@ -1,16 +1,60 @@
 import React, {Component} from 'react'
-import {StyleSheet, Text, View} from 'react-native'
+import {StyleSheet, Text, View, Animated, TouchableWithoutFeedback} from 'react-native'
 
 export default class AppHeader extends Component {
   render() {
     return (
       <View style={[styles.container, this.props.style]}>
         <Text style={styles.title}>MoMo</Text>
-        <View style={styles.hamberger}>
-          <View style={styles.hambergerItem} />
-          <View style={styles.hambergerItem} />
-          <View style={styles.hambergerItem} />
-        </View>
+        <TouchableWithoutFeedback onPress={this.props.menuClick}>
+          <View style={styles.hamberger}>
+            <Animated.View style={{
+              ...styles.hambergerItem,
+              transform: [
+                {
+                  translateY: this.props.hamberger.interpolate({
+                    inputRange: [0, .5, 1],
+                    outputRange: [0, 7, 7]
+                  })
+                },
+                {
+                  rotate: this.props.hamberger.interpolate({
+                    inputRange: [0, .5, 1],
+                    outputRange: ['0deg', '0deg', '45deg']
+                  })
+                }
+              ]
+            }} />
+            <Animated.View style={{
+              ...styles.hambergerItem,
+              transform: [
+                {
+                  rotate: this.props.hamberger.interpolate({
+                    inputRange: [0, .5, 1],
+                    outputRange: ['0deg', '0deg', '45deg']
+                  })
+                }
+              ]
+            }} />
+            <Animated.View style={{
+              ...styles.hambergerItem,
+              transform: [
+                {
+                  translateY: this.props.hamberger.interpolate({
+                    inputRange: [0, .5, 1],
+                    outputRange: [0, -7, -7]
+                  })
+                },
+                {
+                  rotate: this.props.hamberger.interpolate({
+                    inputRange: [0, .5, 1],
+                    outputRange: ['0deg', '0deg', '-45deg']
+                  })
+                }
+              ]
+            }} />
+          </View>
+        </TouchableWithoutFeedback>
       </View>
     )
   }

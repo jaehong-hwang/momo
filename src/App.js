@@ -1,11 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React, {Component} from 'react'
 import {StyleSheet, View, Text, Image, Dimensions} from 'react-native'
 import Expense from './components/Expense'

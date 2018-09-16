@@ -21,6 +21,7 @@ export default class App extends Component {
           </Text>
         </View>
         <SwypeToStats style={{position: 'absolute', alignSelf: 'center', bottom: 100}} />
+        <Image source={require('./assets/images/quick-add.png')} style={{position: 'absolute', width: 42, height: 42, right: 20, bottom: 30}} />
       </View>
     )
   }

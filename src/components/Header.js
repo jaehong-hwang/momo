@@ -3,55 +3,66 @@ import {StyleSheet, Text, View, Animated, TouchableWithoutFeedback} from 'react-
 
 export default class AppHeader extends Component {
   render() {
+    let color = this.props.animation.interpolate({
+      inputRange: [0, 1],
+      outputRange: ['rgb(0, 0, 0)', 'rgb(255, 255, 255)']
+    })
+
     return (
-      <View style={[styles.container, this.props.style]}>
-        <Text style={styles.title}>MoMo</Text>
+      <View style={{...styles.container, ...this.props.style}}>
+        <Animated.Text style={{
+          ...styles.title,
+          color: color
+        }}>MoMo</Animated.Text>
         <TouchableWithoutFeedback onPress={this.props.menuClick}>
           <View style={styles.hamberger}>
             <Animated.View style={{
               ...styles.hambergerItem,
               transform: [
                 {
-                  translateY: this.props.hamberger.interpolate({
+                  translateY: this.props.animation.interpolate({
                     inputRange: [0, .5, 1],
                     outputRange: [0, 7, 7]
                   })
                 },
                 {
-                  rotate: this.props.hamberger.interpolate({
+                  rotate: this.props.animation.interpolate({
                     inputRange: [0, .5, 1],
                     outputRange: ['0deg', '0deg', '45deg']
                   })
                 }
-              ]
+              ],
+              backgroundColor: color
             }} />
             <Animated.View style={{
               ...styles.hambergerItem,
               transform: [
                 {
-                  rotate: this.props.hamberger.interpolate({
+                  rotate: this.props.animation.interpolate({
                     inputRange: [0, .5, 1],
                     outputRange: ['0deg', '0deg', '45deg']
                   })
                 }
-              ]
+              ],
+              backgroundColor: color
             }} />
             <Animated.View style={{
               ...styles.hambergerItem,
               transform: [
                 {
-                  translateY: this.props.hamberger.interpolate({
+                  translateY: this.props.animation.interpolate({
                     inputRange: [0, .5, 1],
                     outputRange: [0, -7, -7]
                   })
                 },
                 {
-                  rotate: this.props.hamberger.interpolate({
+                  rotate: this.props.animation.interpolate({
                     inputRange: [0, .5, 1],
                     outputRange: ['0deg', '0deg', '-45deg']
                   })
                 }
-              ]
+              ],
+              backgroundColor: color
             }} />
           </View>
         </TouchableWithoutFeedback>
@@ -72,7 +83,6 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     fontSize: 21,
     fontWeight: 'bold',
-    color: 'rgb(51, 51, 51)',
   },
   hamberger: {
     marginTop: 17,
@@ -82,6 +92,5 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     width: 23,
     height: 2,
-    backgroundColor: 'rgb(0, 0, 0)'
   }
 })

@@ -2,11 +2,12 @@ import React, {Component} from 'react'
 import {StyleSheet, View, Text, Image, Dimensions, Animated} from 'react-native'
 import Expense from './components/Expense'
 import AppHeader from './components/Header'
+import Menu from './components/Menu'
 import SwypeToStats from './components/SwypeToStats'
 
 export default class App extends Component {
   state = {
-    hamberger: new Animated.Value(0),
+    menu: new Animated.Value(0),
     menuOpened: false
   }
 
@@ -19,14 +20,14 @@ export default class App extends Component {
   }
 
   openMenu() {
-    Animated.timing(this.state.hamberger, {
+    Animated.timing(this.state.menu, {
       toValue: 1,
       duration: 500,
     }).start()
   }
 
   closeMenu() {
-    Animated.timing(this.state.hamberger, {
+    Animated.timing(this.state.menu, {
       toValue: 0,
       duration: 500,
     }).start()
@@ -37,7 +38,8 @@ export default class App extends Component {
 
     return (
       <View style={{height: height}}>
-        <AppHeader hamberger={this.state.hamberger} menuClick={() => this.menuClick()} />
+        <AppHeader style={{zIndex: 2}} animation={this.state.menu} menuClick={() => this.menuClick()} />
+        <Menu style={{position: 'absolute', left: 0, top: 0, width: width, height: height, zIndex: 1}} animation={this.state.menu} />
         <View style={styles.body}>
           <Expense title="이번달 지출" price="312540" style={styles.expense} />
           <Expense title="초과 지출" price="12540" error style={styles.expense} />

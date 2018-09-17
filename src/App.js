@@ -22,14 +22,14 @@ export default class App extends Component {
   openMenu() {
     Animated.timing(this.state.menu, {
       toValue: 1,
-      duration: 500,
+      duration: 300,
     }).start()
   }
 
   closeMenu() {
     Animated.timing(this.state.menu, {
       toValue: 0,
-      duration: 500,
+      duration: 300,
     }).start()
   }
 

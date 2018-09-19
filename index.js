@@ -1,7 +1,14 @@
-/** @format */
+import {Navigation} from 'react-native-navigation'
 
-import {AppRegistry} from 'react-native';
-import App from './src/App';
-import {name as appName} from './src/app.json';
+Navigation.registerComponent('momo.Main', () => require('./src/screens/Main').default)
 
-AppRegistry.registerComponent(appName, () => App);
+Navigation.events().registerAppLaunchedListener(() => {
+  console.log('set root to momo main')
+  Navigation.setRoot({
+    root: {
+      component: {
+        name: 'momo.Main'
+      }
+    }
+  })
+})

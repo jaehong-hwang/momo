@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
 import {StyleSheet, View, Text, Image, Dimensions, Animated} from 'react-native'
-import Expense from './components/Expense'
-import AppHeader from './components/Header'
-import Menu from './components/Menu'
-import SwypeToStats from './components/SwypeToStats'
+import Expense from '../components/Expense'
+import AppHeader from '../components/Header'
+import Menu from '../components/Menu'
+import SwypeToStats from '../components/SwypeToStats'
 
-export default class App extends Component {
+export default class Main extends Component {
   state = {
     menu: new Animated.Value(0),
     menuOpened: false
@@ -50,7 +50,7 @@ export default class App extends Component {
           </Text>
         </View>
         <SwypeToStats style={{position: 'absolute', alignSelf: 'center', bottom: 100}} />
-        <Image source={require('./assets/images/quick-add.png')} style={{position: 'absolute', width: 42, height: 42, right: 20, bottom: 30}} />
+        <Image source={require('../assets/images/quick-add.png')} style={{position: 'absolute', width: 42, height: 42, right: 20, bottom: 30}} />
       </View>
     )
   }

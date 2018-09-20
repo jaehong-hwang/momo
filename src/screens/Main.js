@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
+import {Navigation} from 'react-native-navigation'
 import {StyleSheet, View, Text, Image, Dimensions, Animated} from 'react-native'
 import Expense from '../components/Expense'
-import AppHeader from '../components/Header'
+import AppHeader from '../components/AppHeader'
 import Menu from '../components/Menu'
 import SwypeToStats from '../components/SwypeToStats'
 
@@ -33,13 +34,25 @@ export default class Main extends Component {
     }).start()
   }
 
+  open(name) {
+    Navigation.push(this.props.componentId, {
+      component: {
+        name: name
+      }
+    })
+  }
+
   render() {
     let {height, width} = Dimensions.get('window')
 
     return (
       <View style={{height: height}}>
         <AppHeader style={{zIndex: 2}} animation={this.state.menu} menuClick={() => this.menuClick()} />
-        <Menu style={{position: 'absolute', left: 0, top: 0, width: width, height: height, zIndex: 1}} animation={this.state.menu} />
+
+        <Menu style={{...styles.menu, width: width, height: height}}
+          animation={this.state.menu}
+          open={(name) => this.open(name)} />
+
         <View style={styles.body}>
           <Expense title="이번달 지출" price="312540" style={styles.expense} />
           <Expense title="초과 지출" price="12540" error style={styles.expense} />
@@ -68,5 +81,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'rgb(94, 94, 94)',
     lineHeight: 22,
+  },
+  menu: {
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    zIndex: 1
   },
 })

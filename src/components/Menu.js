@@ -3,7 +3,6 @@ import {StyleSheet, Text, View, Animated} from 'react-native'
 
 export default class AppHeader extends Component {
   render() {
-
     return (
       <Animated.View style={{
         ...this.props.style,
@@ -11,7 +10,7 @@ export default class AppHeader extends Component {
         opacity: this.props.animation
       }}>
         <View style={styles.menus}>
-          <Text style={styles.menuText}>카테고리</Text>
+          <Text style={styles.menuText} onPress={() => this.props.open('momo.Category')}>카테고리</Text>
           <Text style={styles.menuText}>지출 관리</Text>
           <Text style={styles.menuText}>통계 확인</Text>
           <Text style={styles.menuText}>은행사 연동</Text>

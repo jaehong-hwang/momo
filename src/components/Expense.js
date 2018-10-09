@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {StyleSheet, Text, View} from 'react-native'
 
-export default class AppHeader extends Component {
+export default class Expense extends Component {
   render() {
     let styleObj = {
       title: {

@@ -4,10 +4,23 @@ Navigation.registerComponent('momo.Main', () => require('./src/screens/Main').de
 Navigation.registerComponent('momo.Category', () => require('./src/screens/Category').default)
 
 Navigation.events().registerAppLaunchedListener(() => {
+  Navigation.setDefaultOptions({
+    topBar: {
+      visible: false
+    }
+  })
+
   Navigation.setRoot({
     root: {
-      component: {
-        name: 'momo.Main'
+      stack: {
+        id: 'App',
+        children: [
+          {
+            component: {
+              name: 'momo.Main'
+            }
+          }
+        ],
       }
     }
   })

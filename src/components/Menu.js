@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {StyleSheet, Text, View, Animated} from 'react-native'
 
-export default class AppHeader extends Component {
+export default class Menu extends Component {
   render() {
     return (
       <Animated.View style={{
